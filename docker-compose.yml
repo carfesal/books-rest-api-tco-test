@@ -1,0 +1,32 @@
+version: "3.9"
+
+services:
+  app:    
+    container_name: book_app
+    build:
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - "3000:3000"
+    volumes:
+      - .:/app
+    environment:
+      - PG_DB=books_db
+      - PG_USER=postgres
+      - PG_PASSWORD=postgres
+      - PG_HOST=db
+    depends_on:
+      - db
+  db:
+    container_name: books_db
+    image: postgres:13.3-alpine
+    ports:
+      - "5432:5432"
+    environment:
+      - POSTGRES_DB=books_db
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=postgres
+    volumes:
+      - node_db_data:/var/lib/postgresql/data
+volumes:
+  node_db_data: {}
