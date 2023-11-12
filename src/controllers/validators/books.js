@@ -5,7 +5,8 @@ export const validateCreateBook = [
     check("title").exists().isString(),
     check("author_id").exists().isInt(),
     check("description").optional().isString().notEmpty(),
-    check("publish_date").exists().isString().notEmpty(),
+    check("publish_date").isISO8601(),
+    check("available_amount").exists().isInt(),
     check("isbn").exists().isString().notEmpty(),
     (req, res, next) => {
         const errors = validationResult(req);

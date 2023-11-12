@@ -9,6 +9,7 @@ export const Loan = sequelize.define("loan", {
     },
     loan_date: {
         type: DataTypes.DATEONLY,
+        defaultValue: DataTypes.NOW,
     },
     return_date: {
         type: DataTypes.DATEONLY,

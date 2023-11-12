@@ -4,6 +4,7 @@ import { validationResult } from "express-validator";
 export const validateCreateAuthor = [
     check("name").exists().isString(),
     check("biography").exists().isString(),
+    check("birth_date").exists().isISO8601(),
     (req, res, next) => {
         const errors = validationResult(req);
         if (!errors.isEmpty()) {

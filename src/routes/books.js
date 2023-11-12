@@ -1,6 +1,6 @@
 import { Router } from "express";
 import { getBooks, createBook, getBookById, updateBook, deleteBook } from "../controllers/books.js";
-import { validateCreateBook, validateUpdateBook } from "../controllers/validators/book.js";
+import { validateCreateBook, validateUpdateBook } from "../controllers/validators/books.js";
 
 const router = Router();
 
