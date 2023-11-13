@@ -12,7 +12,7 @@ Pasos para correr el proyecto con docker:
 3. Moverse a la carpeta del proyecto
 4. Correr el comando
 
-    ``docker compose up --build``
+    ``docker compose up --build -d``
 5. En estos momentos el proyecto estara apto para su uso
 
 > Nota: Para facilidad de prueba en la autenticacion solo se necestia pasar el email como valor de un header con nombre **authorization**:

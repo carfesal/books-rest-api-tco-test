@@ -7,7 +7,7 @@ import './models/user.js' ;
 
 async function main() {
     try {
-        await sequelize.sync({ force: true});
+        await sequelize.sync({ force: false});
         app.listen(3000);
         console.log('Server listening on port 3000');
     } catch (error) {
