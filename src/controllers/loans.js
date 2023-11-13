@@ -29,9 +29,7 @@ export const makeLoan = async (req, res) => {
         const loan = await Loan.create({book_id: req.params.book_id, user_id: authUser.id});
         const updatedBook = await book.update({available_amount: book.available_amount - 1});
 
-        res.json({
-            data: loan
-        });
+        res.json(loan);
     } catch (error) {
         console.log(error);
     }
@@ -50,9 +48,7 @@ export const returnBook = async (req, res) => {
 
         const returnedLoan = await loan.update({available_amount: loan.available_amount + 1});
         
-        res.json({
-            data: loan
-        });
+        res.json(loan);
     } catch (error) {
         console.log(error);
     }
@@ -63,9 +59,7 @@ export const checkLoans = async (req, res) => {
         const authUser = await User.findOne({where: {email: req.headers.authorization}});
         const loans = await Loan.findAll({where: {user_id: authUser.id}});
 
-        res.json({
-            data: loans
-        });
+        res.json(loans);
     } catch (error) {
         console.log(error);
     }

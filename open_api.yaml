@@ -1,0 +1,419 @@
+openapi: 3.0.0
+servers:
+  # Added by API Auto Mocking Plugin
+  - description: SwaggerHub API Auto Mocking
+    url: https://virtserver.swaggerhub.com/CARFESAL_1/tco_books_api/1.0.0
+  - description: SwaggerHub API for Book TCO Test
+    url: http://virtserver.swaggerhub.com/CARFESAL_1/tco_books_api/1.0.0
+info:
+  version: "1.0.0"
+  title: TCO - BBOX BOOKS
+  description: The API for the EatBacon IOT project
+paths:
+  /books:
+    get:
+      tags:
+        - Books
+      description: returns all books
+      operationId: getBooks
+      responses:
+        '200':
+          description: All the devices
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/book'
+    post:
+      tags:
+        - Books
+      operationId: register
+      responses:
+        '200':
+          description: successfully registered device
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                title:
+                  type: string
+                  example: 'The Moon'
+                author_id:
+                  type: integer
+                  example: 1
+                description:
+                  type: string
+                  example: 'This book was written...'
+                isbn:
+                  type: string
+                  example: 'ISO123'
+                publish_date:
+                  type: string
+                  format: date
+                  example: '2002-12-12'
+                available_amount:
+                  type: integer
+                  example: 150
+              required:
+                - title
+                - author_id
+                - isbn
+                - publish_date
+                - available_amount
+  /books/{id}:
+    get:
+      tags:
+        - Books
+      description: returns all books
+      operationId: getBookPerId
+      parameters: 
+        - in: path
+          name: id
+          required: true
+          schema:
+            type: integer
+      responses:
+        '200':
+          description: All the books
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/bookWithoutAuthor'
+    put:
+      tags:
+        - Books
+      operationId: updateBook
+      parameters: 
+        - in: path
+          name: id
+          required: true
+          schema:
+            type: integer
+      responses:
+        '200':
+          description: All the books
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/bookWithoutAuthor'
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                title:
+                  type: string
+                  example: 'Hola mundo'
+                isbn: 
+                  type: string
+                description:
+                  type: string
+                publish_date:
+                  description: 'Date must be in format ISO8601 (YYYY-MM-DD)'
+                  type: string
+                  format: date
+                  example: '2023-12-13'
+                available_amount:
+                  type: integer
+                  example: 10
+              
+    delete:
+      tags:
+        - Books
+      operationId: deleteBook
+      parameters: 
+        - in: path
+          name: id
+          required: true
+          schema:
+            type: integer
+      responses:
+        '200':
+          $ref: "#/components/schemas/bookWithoutAuthor"
+        '404':
+          description: error when deleting the book
+          
+  /authors:
+    get:
+      tags:
+        - Authors
+      description: returns all books
+      operationId: Authors
+      responses:
+        '200':
+          description: All the authors
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/author'
+    post:
+      tags:
+        - Authors
+      operationId: createAuthor
+      responses:
+        '200':
+          description: successfully created author
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/author'
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                name: 
+                  type: string
+                  example: 'carlos salazar'
+                birth_date:
+                  description: 'Date must be in format ISO8601 (YYYY-MM-DD)'
+                  type: string
+                  format: date
+                  example: '2023-12-13'
+                biography:
+                  type: string
+                  example: 'Born in.....'
+              required:
+                - name
+                - birth_date
+                - biography
+  /authors/{id}/books:
+    get:
+      tags:
+        - Authors
+      operationId: getBooksPerAuthor
+      parameters: 
+        - in: path
+          name: id
+          required: true
+          schema:
+            type: integer
+      responses:
+        '200':
+          description: successfully get authors books
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  id:
+                    type: integer
+                    example: 2
+                  name:
+                    type: string
+                    example: 'ALejandro Dumas'
+                  birth_date:
+                    type: string
+                    format: date
+                    example: '1500-12-12'
+                  biography:
+                    type: string
+                    example: 'Born in....'
+                  books:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/book'
+  /users:
+    get:
+      tags:
+        - Users
+      description: returns all users
+      operationId: getUsers
+      responses:
+        '200':
+          description: All users
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/user'
+    post:
+      tags:
+        - Users
+      description: Endpoint to register an user
+      operationId: registerUsers
+      responses:
+        '200':
+          description: successfully registered user
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/user'
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/user'
+  /loans/check-out/{book_id}:
+    post:
+      tags:
+        - Loans
+      operationId: makeBookLoan
+      parameters: 
+        - in: path
+          name: book_id
+          required: true
+          schema:
+            type: integer
+      security: 
+        - basicEmailAuth: []
+      responses:
+        '200':
+          description: successfully loan of book
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/book'
+  /loans/return/{book_id}:
+    post:
+      tags:
+        - Loans
+      operationId: makeBookReturn
+      parameters: 
+        - in: path
+          name: book_id
+          required: true
+          schema:
+            type: integer
+      security: 
+        - basicEmailAuth: []
+      responses:
+        '200':
+          description: successfully loan of book
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/book'
+  /loans:
+    get:
+      tags:
+        - Loans
+      operationId: getAllLoansOfUser
+      security: 
+        - basicEmailAuth: []
+      responses:
+        '200':
+          description: successfully loan of book
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/book'
+components:
+  securitySchemes:
+    basicEmailAuth:
+      description: A header which value must be the email to make the auth
+      type: apiKey
+      in: header
+      name: authorization
+  schemas:
+    bookWithoutAuthor:
+      type: object
+      properties:
+        id:
+          type: integer
+          example: 2
+        title:
+          type: string
+          example: 'The Moon'
+        author_id:
+          type: integer
+          example: 1
+        description:
+          type: string
+          example: 'This book was written...'
+        isbn:
+          type: string
+          example: 'ISO123'
+        publish_date:
+          type: string
+          format: date
+          example: '2002-12-12'
+        available_amount:
+          type: integer
+          example: 150
+    book: 
+      type: object
+      properties:
+        id:
+          type: integer
+          example: 2
+        title:
+          type: string
+          example: 'The Moon'
+        author:
+          $ref: '#/components/schemas/author'
+        description:
+          type: string
+          example: 'This book was written...'
+        isbn:
+          type: string
+          example: 'ISO123'
+        publish_date:
+          type: string
+          format: date
+          example: '2002-12-12'
+        available_amount:
+          type: integer
+          example: 150
+    author:
+      type: object
+      properties:
+        id:
+          type: integer
+          example: 5
+        name:
+          type: string
+          example: 'Alejandro Dumas'
+        biography:
+          type: string
+          example: "Born in 155...."
+        birth_date:
+          type: string
+          format: date
+          example: '1451-12-12'
+    user:
+      type: object
+      properties:
+        id:
+          type: integer
+          example: 15
+        name: 
+          type: integer
+          example: 'Carlos Salazar'
+        email:
+          type: string
+          example: 'chardan1225@hotmail.com'
+        registered_date:
+          type: string
+          format: date
+          example: '2023-06-06'
+    loan:
+      type: object
+      properties:
+        id: 
+          type: integer
+          example: 1
+        book:
+          $ref: '#/components/schemas/book'
+        user:
+          $ref: '#/components/schemas/user'
+        loan_date:
+          type: string
+          format: date
+          example: '2023-06-06'
+        return_date:
+          type: string
+          format: date
+          example: null
