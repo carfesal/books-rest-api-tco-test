@@ -17,6 +17,7 @@ services:
       - PG_HOST=db
     depends_on:
       - db
+    restart: on-failure
   db:
     container_name: books_db
     image: postgres:13.3-alpine
@@ -28,5 +29,11 @@ services:
       - POSTGRES_PASSWORD=postgres
     volumes:
       - node_db_data:/var/lib/postgresql/data
+    healthcheck:
+      test: ["executable", "arg"]
+      interval: 1m30s
+      timeout: 30s
+      retries: 5
+      start_period: 30s
 volumes:
   node_db_data: {}

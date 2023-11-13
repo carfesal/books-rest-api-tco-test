@@ -28,5 +28,5 @@ export const User = sequelize.define("user", {
     timestamps: false,
 });
 
-User.hasMany(Loan, {foreignKey: 'user_id', sourceKey: 'id'});
+User.hasMany(Loan, {foreignKey: 'user_id', sourceKey: 'id', onDelete: 'CASCADE'});
 Loan.belongsTo(User, {foreignKey: 'user_id', targetId: 'id'});

@@ -32,5 +32,5 @@ export const Book = sequelize.define("book", {
     timestamps: false,
 });
 
-Book.hasMany(Loan, {foreignKey: 'book_id', sourceKey: 'id'});
+Book.hasMany(Loan, {foreignKey: 'book_id', sourceKey: 'id', onDelete: 'CASCADE'});
 Loan.belongsTo(Book, {foreignKey: 'book_id', targetId: 'id'});

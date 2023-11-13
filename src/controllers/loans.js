@@ -6,7 +6,7 @@ export const makeLoan = async (req, res) => {
     try {
         const book = await Book.findByPk(req.params.book_id);
         const authUser = await User.findOne({where: {email: req.headers.authorization}});
-        const loanExists = await Loan.findOne({where: {book_id: req.params.book_id, user_id: authUser.id}});
+        const loanExists = await Loan.findOne({where: {book_id: req.params.book_id, user_id: authUser.id, return_date: null}});
         
         if (!book) {
             return res.status(400).json({
@@ -38,6 +38,14 @@ export const makeLoan = async (req, res) => {
 export const returnBook = async (req, res) => {
     try {
         const authUser = await User.findOne({where: {email: req.headers.authorization}});
+        const book = await Book.findByPk(req.params.book_id);
+
+        if (!book) {
+            return res.status(400).json({
+                message: "Book does not exist."
+            });
+        }
+
         const loan = await Loan.findOne({where: {book_id: req.params.book_id, user_id: authUser.id}});        
 
         if (!loan) {
@@ -46,8 +54,9 @@ export const returnBook = async (req, res) => {
             });
         }
 
-        const returnedLoan = await loan.update({available_amount: loan.available_amount + 1});
-        
+        const returnedLoan = await loan.update({return_date: new Date().toJSON().slice(0, 10)});
+        const returnBook = await book.update({available_amount: book.available_amount + 1});
+
         res.json(loan);
     } catch (error) {
         console.log(error);

@@ -22,6 +22,6 @@ export const Author = sequelize.define("author", {
     timestamps: false,
 });
 
-Author.hasMany(Book, {foreignKey: 'author_id', sourceKey: 'id'});
+Author.hasMany(Book, {foreignKey: 'author_id', sourceKey: 'id', onDelete: 'SET NULL'});
 
 Book.belongsTo(Author, {foreignKey: 'author_id', targetId: 'id'});
