@@ -10,6 +10,7 @@ services:
       - "3000:3000"
     volumes:
       - .:/app
+      - /app/node_modules
     environment:
       - PG_DB=books_db
       - PG_USER=postgres
@@ -30,7 +31,7 @@ services:
     volumes:
       - node_db_data:/var/lib/postgresql/data
     healthcheck:
-      test: ["executable", "arg"]
+      test: ["CMD-SHELL", "pg_isready -U postgres"]
       interval: 1m30s
       timeout: 30s
       retries: 5
