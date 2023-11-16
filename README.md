@@ -28,9 +28,10 @@
 
 3. Moverse a la carpeta del proyecto
 4. Copiar el archivo .env.example y renombrarlo a .env
-5. Correr el comando
+5. Editar la variable de entorno **DB_HOST** con la direccion de la base de datos. **Ej:** localhost
+6. Correr el comando
 
     ``npm install``
-6. Correr el comando
+7. Correr el comando
 
     ``npm run start``
