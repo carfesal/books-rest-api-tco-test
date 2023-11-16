@@ -7,15 +7,12 @@ services:
       context: .
       dockerfile: Dockerfile
     ports:
-      - "3000:3000"
+      - "${APP_PORT:-3000}:3000"
     volumes:
       - .:/app
       - /app/node_modules
-    environment:
-      - PG_DB=books_db
-      - PG_USER=postgres
-      - PG_PASSWORD=postgres
-      - PG_HOST=db
+    env_file:
+      - .env
     depends_on:
       - db
     restart: on-failure
@@ -23,11 +20,11 @@ services:
     container_name: books_db
     image: postgres:13.3-alpine
     ports:
-      - "5432:5432"
+      - "${DB_PORT:-5432}:5432"
     environment:
-      - POSTGRES_DB=books_db
-      - POSTGRES_USER=postgres
-      - POSTGRES_PASSWORD=postgres
+      - POSTGRES_DB='${DB_NAME}'
+      - POSTGRES_USER='${DB_USER}'
+      - POSTGRES_PASSWORD='${DB_PASSWORD}'
     volumes:
       - node_db_data:/var/lib/postgresql/data
     healthcheck:
