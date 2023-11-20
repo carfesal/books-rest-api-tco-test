@@ -1,0 +1,211 @@
+{
+    "items": [
+        {
+            "id": 10,
+            "createdAt": "2023-06-09T02:18:21.631Z",
+            "updatedAt": "2023-11-15T00:35:50.010Z",
+            "clientId": 2,
+            "invoice": "/storage/files/tracking/a367fe79-bcae-4c70-84c3-456802beef27.pdf",
+            "tracking": "8884408188",
+            "trackingFile": null,
+            "warehouse": "900111",
+            "value": 800,
+            "category": "B",
+            "description": "Laptop Dell",
+            "status": "inWarehouseUIO",
+            "isIncomplete": false,
+            "statusIncompleteMessage": null,
+            "arrivalDate": "2023-08-13T02:21:43.874Z",
+            "price": 80,
+            "storeWeight": 2,
+            "realWeight": null,
+            "packing": "BOX",
+            "paidAt": null,
+            "profitStatus": "empty",
+            "profitAt": null,
+            "profit": "0",
+            "profitAdmin": "0",
+            "profitAssociate": "0",
+            "items": [
+                {
+                    "quantity": 1,
+                    "unitPrice": 10,
+                    "description": "Laptop"
+                },
+                {
+                    "quantity": 1,
+                    "unitPrice": 8,
+                    "description": "s"
+                }
+            ],
+            "itemsTotal": "19.17",
+            "assistedPurchasePrice": null,
+            "isAuthorizedToBundle": false,
+            "saleOrderDetail": null
+        },
+        {
+            "id": 9,
+            "createdAt": "2023-06-08T04:14:09.119Z",
+            "updatedAt": "2023-06-08T05:28:10.800Z",
+            "clientId": 2,
+            "invoice": "/storage/files/tracking/75be25c9-a18c-4c21-af53-9b7f9041e77d.pdf",
+            "tracking": "23434678",
+            "trackingFile": null,
+            "warehouse": "9081",
+            "value": 1000,
+            "category": "B",
+            "description": "CPU",
+            "status": "receivedAndDelivered",
+            "isIncomplete": false,
+            "statusIncompleteMessage": null,
+            "arrivalDate": "2023-06-08T05:03:24.051Z",
+            "price": 105,
+            "storeWeight": 8,
+            "realWeight": 7,
+            "packing": "BAG",
+            "paidAt": "2023-06-08T05:24:29.255Z",
+            "profitStatus": "paid",
+            "profitAt": "2023-06-08T05:28:10.799Z",
+            "profit": "95",
+            "profitAdmin": "35.62",
+            "profitAssociate": "59.38",
+            "items": [
+                {
+                    "quantity": 1,
+                    "unitPrice": 700,
+                    "description": "CPU"
+                }
+            ],
+            "itemsTotal": "745.5",
+            "assistedPurchasePrice": null,
+            "isAuthorizedToBundle": false,
+            "saleOrderDetail": {
+                "id": 2,
+                "createdAt": "2023-06-08T05:25:15.084Z",
+                "updatedAt": "2023-06-08T05:25:15.084Z",
+                "description": "CPU",
+                "unitPrice": "105",
+                "quantity": 1,
+                "taxPercentage": "0",
+                "subtotal": "105",
+                "saleOrderId": 2,
+                "orderId": 9
+            }
+        },
+        {
+            "id": 8,
+            "createdAt": "2023-06-08T04:14:09.119Z",
+            "updatedAt": "2023-06-08T05:28:14.743Z",
+            "clientId": 2,
+            "invoice": "/storage/files/tracking/75be25c9-a18c-4c21-af53-9b7f9041e77d.pdf",
+            "tracking": "234567677",
+            "trackingFile": null,
+            "warehouse": "90013",
+            "value": 500,
+            "category": "B",
+            "description": "Monitor LG",
+            "status": "receivedAndDelivered",
+            "isIncomplete": false,
+            "statusIncompleteMessage": null,
+            "arrivalDate": "2023-06-08T05:02:52.676Z",
+            "price": 52.5,
+            "storeWeight": 4,
+            "realWeight": 3.5,
+            "packing": "BOX",
+            "paidAt": "2023-06-08T05:26:18.079Z",
+            "profitStatus": "paid",
+            "profitAt": "2023-06-08T05:28:14.742Z",
+            "profit": "47.5",
+            "profitAdmin": "17.81",
+            "profitAssociate": "29.69",
+            "items": [
+                {
+                    "quantity": 1,
+                    "unitPrice": 10,
+                    "description": "Cable USB"
+                },
+                {
+                    "quantity": 1,
+                    "unitPrice": 365,
+                    "description": "Monitor"
+                }
+            ],
+            "itemsTotal": "399.38",
+            "assistedPurchasePrice": null,
+            "isAuthorizedToBundle": false,
+            "saleOrderDetail": {
+                "id": 3,
+                "createdAt": "2023-06-08T05:26:30.698Z",
+                "updatedAt": "2023-06-08T05:26:30.698Z",
+                "description": "Monitor LG",
+                "unitPrice": "52.5",
+                "quantity": 1,
+                "taxPercentage": "0",
+                "subtotal": "52.5",
+                "saleOrderId": 3,
+                "orderId": 8
+            }
+        },
+        {
+            "id": 2,
+            "createdAt": "2022-06-18T21:52:23.080Z",
+            "updatedAt": "2023-11-15T00:38:24.072Z",
+            "clientId": 2,
+            "invoice": "/storage/files/tracking/7d51ba20-f28f-4cd1-89a0-93fcebcdf5d8.pdf",
+            "tracking": "0988374DA",
+            "trackingFile": null,
+            "warehouse": "15609",
+            "value": 100,
+            "category": "B",
+            "description": "Mouse usb",
+            "status": "inWarehouseUIO",
+            "isIncomplete": false,
+            "statusIncompleteMessage": null,
+            "arrivalDate": "2023-11-15T00:38:24.081Z",
+            "price": 37.5,
+            "storeWeight": 2.5,
+            "realWeight": 2.5,
+            "packing": "SMALL/WHITE/BAG",
+            "paidAt": null,
+            "profitStatus": "pendingOfPay",
+            "profitAt": null,
+            "profit": "27.5",
+            "profitAdmin": "10.31",
+            "profitAssociate": "17.19",
+            "items": [
+                {
+                    "quantity": 2,
+                    "unitPrice": 10,
+                    "description": "holaaaa"
+                },
+                {
+                    "quantity": 1,
+                    "unitPrice": 1,
+                    "description": "2a3e3"
+                }
+            ],
+            "itemsTotal": "0",
+            "assistedPurchasePrice": null,
+            "isAuthorizedToBundle": false,
+            "saleOrderDetail": {
+                "id": 5,
+                "createdAt": "2023-11-15T00:53:35.585Z",
+                "updatedAt": "2023-11-15T00:53:35.585Z",
+                "description": "Mouse usb",
+                "unitPrice": "37.5",
+                "quantity": 1,
+                "taxPercentage": "0",
+                "subtotal": "37.5",
+                "saleOrderId": 5,
+                "orderId": 2
+            }
+        }
+    ],
+    "meta": {
+        "totalItems": 4,
+        "itemCount": 4,
+        "itemsPerPage": 100,
+        "totalPages": 1,
+        "currentPage": 1
+    }
+}
